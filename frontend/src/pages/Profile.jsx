@@ -26,6 +26,7 @@ const Profile = () => {
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [showListings, setShowListings] = useState(false);
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
@@ -131,6 +132,7 @@ const Profile = () => {
       }
 
       setUserListings(data);
+      setShowListings(true);
     } catch (error) {
       setShowListingsError(true);
     }
@@ -238,7 +240,7 @@ const Profile = () => {
         {updateSuccess ? "User is updated successfully!" : ""}
       </p>
       <button onClick={handleShowListings} className="text-green-700 w-full">
-        Show Listings
+        {!showListings ? "Show Listings" : "Hide Listings"}
       </button>
       <p className="text-red-700 mt-5">
         {showListingsError ? "Error showing listings" : ""}
