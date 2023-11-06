@@ -120,7 +120,6 @@ const Search = () => {
     const urlParams = new URLSearchParams(location.search);
     urlParams.set("startIndex", startIndex);
     const searchQuery = urlParams.toString();
-    console.log(searchQuery);
     const res = await fetch(`/api/listing/get?${searchQuery}`);
     const data = await res.json();
     if (data.length < 9) {
